@@ -10,7 +10,6 @@ export default async function Page() {
   if (!session) {
     redirect("/auth/sign-in");
   }
-  await fetchChatCompletion("hello");
   return (
     <div className="w-full min-h-screen bg-BlackRock relative">
       <PreviewPage />

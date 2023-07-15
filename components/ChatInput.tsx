@@ -10,7 +10,7 @@ import { db } from "@/firebase/firebase";
 
 export default function ChatInput({ chatId }: { chatId?: string }) {
   const { data } = useSession();
-  const [localQuery, setLocalQuery] = useState<string | null>(null);
+  const [localQuery, setLocalQuery] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocalQuery(e.target.value);
@@ -19,7 +19,6 @@ export default function ChatInput({ chatId }: { chatId?: string }) {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!localQuery) return;
-    console.log(localQuery);
 
     const queryText = localQuery.trim();
 
@@ -45,7 +44,7 @@ export default function ChatInput({ chatId }: { chatId?: string }) {
     const loadingNoti = toast.loading("ChatGPT is thinking...");
 
     try {
-      await fetch("http://localhost:3000/api/query", {
+      await fetch("/api/query", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +87,7 @@ export default function ChatInput({ chatId }: { chatId?: string }) {
                 height: "24px",
                 overflowY: "hidden",
               }}
-              value={localQuery!}
+              value={localQuery}
               onChange={handleInputChange}
               disabled={!data}
             />

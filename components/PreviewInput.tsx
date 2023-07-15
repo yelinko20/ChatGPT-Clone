@@ -14,6 +14,7 @@ import { db } from "@/firebase/firebase";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { MessageProps } from "@/types";
+import toast from "react-hot-toast";
 export default function PreviewInput() {
   const router = useRouter();
   const { data } = useSession();
@@ -40,8 +41,6 @@ export default function PreviewInput() {
     const queryText = localQuery.trim();
     setLocalQuery("");
     router.push(`/c/${chatId}`);
-    console.log(queryText);
-
     const message: MessageProps = {
       text: queryText,
       createdAt: serverTimestamp(),
@@ -59,8 +58,10 @@ export default function PreviewInput() {
       message
     );
 
+    const loadingNoti = toast.loading("ChatGPT is thinking...");
+
     try {
-      await fetch("http://localhost:3000/api/query", {
+      await fetch("/api/query", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,6 +71,10 @@ export default function PreviewInput() {
           chatId,
           data,
         }),
+      }).then(() => {
+        toast.success("ChatGPT has responded!", {
+          id: loadingNoti,
+        });
       });
     } catch (error) {
       console.log(error);

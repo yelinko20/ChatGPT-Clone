@@ -29,9 +29,11 @@ export default function ChatConversation() {
       )
   );
 
+  const messageLength = messages?.docs.length;
+
   return (
     <div className="flex flex-col bg-BlackRock min-h-screen relative">
-      {messages?.docs.length! > 0 ? (
+      {(messageLength as number) > 0 ? (
         <div className=" overflow-y-auto py-2 mb-60">
           {messages?.docs.map((message) => {
             return <Message key={message.id} message={message.data()} />;

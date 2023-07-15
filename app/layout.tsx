@@ -29,9 +29,9 @@ export default async function RootLayout({
         <AuthProvider session={session}>
           <ReduxProvider>
             <ToastProvider />
-            <div className="flex">
+            <div className="flex ">
               <Sidebar />
-              <div className="w-full">{children}</div>
+              <div className="w-full h-screen bg-BlackRock">{children}</div>
             </div>
           </ReduxProvider>
         </AuthProvider>
