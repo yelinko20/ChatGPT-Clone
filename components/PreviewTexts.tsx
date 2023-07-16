@@ -1,6 +1,6 @@
 export default function PreviewTexts() {
   return (
-    <div className="text-Quartz w-full mx-auto md:max-w-2xl lg:max-w-3xl md:h-full md:flex md:flex-col px-6 ">
+    <div className="text-Quartz w-full mx-auto md:max-w-2xl lg:max-w-3xl md:h-full md:flex md:flex-col px-6">
       <h1 className="text-4xl font-semibold text-center mt-6 sm:pt-[20vh] ml-auto mr-auto mb-10 sm:mb-16 flex gap-2 items-center justify-center">
         ChatGPT
       </h1>

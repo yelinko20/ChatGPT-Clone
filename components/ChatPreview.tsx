@@ -8,7 +8,7 @@ export default function PreviewPage() {
   const isOpen = useAppSelector((state) => state.sidebar.isOpen);
   return (
     <>
-      <div className="w-full mx-auto md:max-w-2xl lg:max-w-3xl  md:flex md:flex-col px-6  relativ bg-BlackRock">
+      <div className="w-full mx-auto md:max-w-2xl lg:max-w-3xl  md:flex md:flex-col px-6  relative bg-BlackRock pb-36 md:pb-0">
         <PreviewTexts />
       </div>
       <div

@@ -40,7 +40,7 @@ export default function ChatConversation() {
           })}
         </div>
       ) : (
-        <div className="w-full mx-auto md:max-w-2xl lg:max-w-3xl  md:flex md:flex-col px-6  relative">
+        <div className="w-full mx-auto md:max-w-2xl lg:max-w-3xl  md:flex md:flex-col px-6 pb-36 md:pb-0 relative">
           <PreviewTexts />
         </div>
       )}
