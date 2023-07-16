@@ -6,19 +6,20 @@ import Message from "@/components/Message";
 import PreviewTexts from "@/components/PreviewTexts";
 import ShowSidebar from "@/components/ShowSidebar";
 import { db } from "@/firebase/firebase";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { openSidebar } from "@/redux/slice/SidebarSlice";
+import { useAppSelector } from "@/redux/hook";
 import { collection, orderBy, query } from "firebase/firestore";
-import { ChevronRight } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { useParams } from "next/navigation";
+import { useParams, redirect } from "next/navigation";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 export default function ChatConversation() {
   const { data } = useSession();
   const { chatId } = useParams();
 
-  const dispatch = useAppDispatch();
+  if (!data) {
+    redirect("/auth/sign-in");
+  }
+
   const isOpen = useAppSelector((state) => state.sidebar.isOpen);
 
   const [messages] = useCollection(

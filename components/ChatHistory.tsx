@@ -19,7 +19,7 @@ export default function ChatHistory({ chatId }: { chatId: string }) {
 
   async function DeleteChat() {
     await deleteDoc(doc(db, "users", data?.user?.email!, "chats", chatId));
-    router.replace("/");
+    router.push("/");
   }
 
   return (
